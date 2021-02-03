@@ -6,8 +6,10 @@ import ru.javawebinar.topjava.model.UserMealWithExcess;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class UserMealsUtil {
     public static void main(String[] args) {
@@ -33,7 +35,18 @@ public class UserMealsUtil {
     }
 
     public static List<UserMealWithExcess> filteredByStreams(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
+       List<UserMealWithExcess> list = new ArrayList<>();
+       // через поток сортирую еду которая превышает количесство установленных каллорий приема пищи для данного временного промежутка
+        meals.stream().filter(p-> TimeUtil.isBetweenHalfOpen(p.getDateTime().toLocalTime(),startTime,endTime)).
+                filter(p-> p.getCalories()>caloriesPerDay).forEach(p->list.add(new UserMealWithExcess(p.getDateTime(),p.getDescription(),
+                p.getCalories(),true)));
+
+
+
         // TODO Implement by streams
-        return null;
+        return list;
     }
+
+    //  не понял наличие boolean переменной у класаа еда ( с превышением(априори она true)
+    // почему бы не сделать bean - прием пищи(callories,data,discription) и день в котром бы хранился список приемов пищи?
 }
