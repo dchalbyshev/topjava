@@ -35,7 +35,7 @@ public class UserMealsUtil {
     }
 
     public static List<UserMealWithExcess> filteredByCycles(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
-       meals.forEach(m-> System.out.println(m));
+       meals.forEach(System.out::println);
 
       /// метод reference  освежить
 
