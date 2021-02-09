@@ -1,8 +1,16 @@
 package ru.javawebinar.topjava.model;
 
+import ru.javawebinar.topjava.util.MealsUtil;
+
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MealTo {
+
+
     private final LocalDateTime dateTime;
 
     private final String description;
@@ -10,6 +18,8 @@ public class MealTo {
     private final int calories;
 
     private final boolean excess;
+
+
 
     public MealTo(LocalDateTime dateTime, String description, int calories, boolean excess) {
         this.dateTime = dateTime;
